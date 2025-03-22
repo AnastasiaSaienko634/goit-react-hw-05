@@ -1,0 +1,12 @@
+p {
+  margin: 0;
+}
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
