@@ -1,0 +1,31 @@
+.list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.porter {
+  width: 250px;
+  height: 300px;
+  margin: 0;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: gray;
+  padding-bottom: 20px;
+  width: 250px;
+  height: 400px;
+}

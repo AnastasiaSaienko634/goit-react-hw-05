@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  padding: 20px 20px;
+  background-color: rgb(248, 185, 253);
+  border-radius: 19px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.link:hover {
+  color: rgb(214, 65, 207);
+}
+
+.icons {
+  width: 50px;
+  height: 50px;
+  fill: rgb(214, 65, 207);
+}

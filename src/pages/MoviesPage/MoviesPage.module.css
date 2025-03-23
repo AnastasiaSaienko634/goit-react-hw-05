@@ -1,0 +1,27 @@
+.search {
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.buttonSearch {
+  width: 120px;
+  height: 45px;
+  border-radius: 8px;
+  margin-right: 5px;
+  font-size: 17px;
+  color: rgb(214, 65, 207);
+  font-weight: 800;
+  background-color: transparent;
+  text-align: center;
+}
+
+.iconss {
+  color: rgb(214, 65, 207);
+  padding-right: 3px;
+  text-align: center;
+}
+
+.form {
+  margin-top: 20px;
+}
