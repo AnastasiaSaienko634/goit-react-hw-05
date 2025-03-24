@@ -12,38 +12,40 @@ export default function MoviePage() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const setParam = () => {
-    searchParams.set("query", query);
-    setSearchParams(searchParams);
-  };
   useEffect(() => {
-    const savedItems = localStorage.getItem("movies");
-    if (savedItems) {
-      setMovies(JSON.parse(savedItems));
-    }
-  }, []);
+    const query = searchParams.get("query");
+    if (!query) return;
+
+    const fetchMovieData = async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const data = await fetchMovies(query);
+        localStorage.setItem("movies", JSON.stringify(data));
+        setMovies(data);
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovieData();
+  }, [searchParams]);
+
+  const setParam = (query) => {
+    setSearchParams({ query });
+  };
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
-    try {
-      setError(false);
-      const form = event.target;
-      const query = form.elements.query.value.trim();
-      if (!query) return;
-      setSearchQuery(query);
-      setLoading(true);
-      const data = await fetchMovies(searchQuery);
-      localStorage.setItem("movies", JSON.stringify(data));
-      setMovies(data);
-      setSearchParams({ query });
-      setSearchQuery("");
-    } catch (error) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const form = event.target;
+    const query = form.elements.query.value.trim();
+    if (!query) return;
 
+    setSearchQuery(query);
+    setParam(query);
+  };
   const onChangeForm = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -63,7 +65,9 @@ export default function MoviePage() {
           placeholder="Search here your movie..."
         />
         {loading && <p>Loading Wait please...</p>}
-        {movies.length === 0 && <p>Sorry, we have nothing found</p>}
+        {!loading && !error && movies.length === 0 && searchQuery && (
+          <p>Sorry, we have found nothing.</p>
+        )}
         <MovieList movies={movies} />
       </form>
     </>
